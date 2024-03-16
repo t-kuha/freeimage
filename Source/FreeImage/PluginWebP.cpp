@@ -24,9 +24,9 @@
 
 #include "../Metadata/FreeImageTag.h"
 
-#include "../LibWebP/src/webp/decode.h"
-#include "../LibWebP/src/webp/encode.h"
-#include "../LibWebP/src/webp/mux.h"
+#include "src/webp/decode.h"
+#include "src/webp/encode.h"
+#include "src/webp/mux.h"
 
 // ==========================================================
 // Plugin Interface
