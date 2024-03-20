@@ -2,7 +2,7 @@
 // EXR Loader and writer
 //
 // Design and implementation by 
-// - Hervé Drolon (drolon@infonie.fr)
+// - Hervï¿½ Drolon (drolon@infonie.fr)
 // - Mihail Naydenov (mnaydenov@users.sourceforge.net)
 //
 // This file is part of FreeImage 3
@@ -28,16 +28,16 @@
 #pragma warning (disable : 4800) // ImfVersion.h - 'const int' : forcing value to bool 'true' or 'false' (performance warning)
 #endif 
 
-#include "../OpenEXR/IlmImf/ImfIO.h"
-#include "../OpenEXR/Iex/Iex.h"
-#include "../OpenEXR/IlmImf/ImfOutputFile.h"
-#include "../OpenEXR/IlmImf/ImfInputFile.h"
-#include "../OpenEXR/IlmImf/ImfRgbaFile.h"
-#include "../OpenEXR/IlmImf/ImfChannelList.h"
-#include "../OpenEXR/IlmImf/ImfRgba.h"
-#include "../OpenEXR/IlmImf/ImfArray.h"
-#include "../OpenEXR/IlmImf/ImfPreviewImage.h"
-#include "../OpenEXR/Half/half.h"
+#include "OpenEXR/IlmImf/ImfIO.h"
+#include "IlmBase/Iex/Iex.h"
+#include "OpenEXR/IlmImf/ImfOutputFile.h"
+#include "OpenEXR/IlmImf/ImfInputFile.h"
+#include "OpenEXR/IlmImf/ImfRgbaFile.h"
+#include "OpenEXR/IlmImf/ImfChannelList.h"
+#include "OpenEXR/IlmImf/ImfRgba.h"
+#include "OpenEXR/IlmImf/ImfArray.h"
+#include "OpenEXR/IlmImf/ImfPreviewImage.h"
+#include "IlmBase/Half/half.h"
 
 
 // ==========================================================

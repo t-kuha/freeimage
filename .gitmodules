@@ -7,3 +7,6 @@
 [submodule "third_party/libwebp"]
 	path = third_party/libwebp
 	url = https://chromium.googlesource.com/webm/libwebp
+[submodule "third_party/openexr"]
+	path = third_party/openexr
+	url = https://github.com/AcademySoftwareFoundation/openexr.git

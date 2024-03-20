@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(freeimage LANGUAGES C CXX)
+set(CXX_STANDARD 14)
 
 # configs
-option(FI_WITH_EXR ".exr support" OFF)
+option(FI_WITH_EXR ".exr support" ON)
 option(FI_WITH_JPEG ".jpeg/.jpg support" OFF)
 option(FI_WITH_OPENJPEG ".jpeg/.jpg support" OFF)
 option(FI_WITH_JXR ".jxr support" OFF)
@@ -111,6 +112,28 @@ target_link_libraries(zlibstatic)
 # EXR
 if (FI_WITH_EXR)
     target_sources(freeimage PRIVATE Source/FreeImage/PluginEXR.cpp)
+    # add_subdirectory(third_party/openexr/OpenEXR)
+    add_subdirectory(third_party/openexr/IlmBase)
+    target_include_directories(
+        freeimage PUBLIC 
+        third_party/openexr
+        # third_party/openexr/IlmBase
+        third_party/openexr/IlmBase/Half
+        third_party/openexr/IlmBase/Imath
+        third_party/openexr/IlmBase/Iex
+        ${CMAKE_BINARY_DIR}/third_party/openexr/IlmBase/config
+        ${CMAKE_BINARY_DIR}/third_party/openexr/OpenEXR/config
+    )
+
+    # generate 
+    include(ExternalProject)
+    ExternalProject_Add(
+        OpenEXR
+        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/openexr/OpenEXR
+        CMAKE_ARGS -S ${CMAKE_CURRENT_SOURCE_DIR}/third_party/openexr/OpenEXR -B ${CMAKE_BINARY_DIR}/third_party/openexr/OpenEXR/
+        BUILD_COMMAND "" # disable build & install step
+        INSTALL_COMMAND ""
+    )
 endif(FI_WITH_EXR)
 
 # jpeg
@@ -151,6 +174,8 @@ if(FI_WITH_PNG)
     option(PNG_SHARED "Build static lib" OFF)
     option(PNG_TESTS "Build libpng tests" OFF)
     option(PNG_DEBUG "Build zlib as static lib" OFF)
+    set(CMAKE_CXX_FLAGS -fPIC)
+    set(CMAKE_C_FLAGS -fPIC)
     add_subdirectory(third_party/libpng)
     target_include_directories(freeimage PUBLIC third_party/libpng)
     target_link_libraries(freeimage PUBLIC png_static)
