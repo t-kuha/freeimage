@@ -178,6 +178,7 @@ if(FI_WITH_PNG)
     set(CMAKE_C_FLAGS -fPIC)
     add_subdirectory(third_party/libpng)
     target_include_directories(freeimage PUBLIC third_party/libpng)
+    target_include_directories(freeimage PUBLIC ${CMAKE_BINARY_DIR}/third_party/libpng)
     target_link_libraries(freeimage PUBLIC png_static)
 endif(FI_WITH_PNG)    
 
